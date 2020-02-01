@@ -37,4 +37,21 @@ userRoute.route("/read-user/:id").get((req, res) => {
     }
   });
 });
+
+userRoute.route("/login").post((req, res, next) => {
+  if (req.body.gbc_number && req.body.user_password) {
+    User.authenticate(req.body.gbc_number, req.body.user_password, function(
+      error,
+      user
+    ) {
+      if (error || !user) {
+        var err = new Error("Wrong GBC number or password.");
+        err.status = 401;
+        return next(err);
+      } else {
+        return res.json(user);
+      }
+    });
+  }
+});
 module.exports = userRoute;

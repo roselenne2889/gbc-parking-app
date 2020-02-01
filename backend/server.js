@@ -16,7 +16,7 @@ mongoose
       console.log("Database sucessfully connected");
     },
     error => {
-      console.log("Database could not connected: " + error);
+      console.log("Database could be not connected: " + error);
     }
   );
 

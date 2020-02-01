@@ -7,7 +7,7 @@ let Reservation = new Schema(
       type: Number
     },
     lot: {
-      type: string
+      type: String
     },
     slotNumber: {
       type: Number

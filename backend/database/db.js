@@ -1,4 +1,4 @@
 module.exports = {
   db:
-    "mongodb+srv://admin:adminpassword@cluster0-ujfpv.mongodb.net/test?retryWrites=true&w=majority"
+    "mongodb+srv://beatriz:beatrizpassword@database-pygcq.mongodb.net/database?retryWrites=true&w=majority"
 };

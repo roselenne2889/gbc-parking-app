@@ -1,28 +1,49 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-//defining the collection and schema
-let User = new Schema(
+// Define collection and schema
+let UserSchema = new Schema(
   {
-    firstName: {
+    first_name: {
       type: String
     },
-    lastName: {
+    last_name: {
       type: String
     },
-    gbcNumber: {
+    gbc_number: {
       type: Number
     },
     email: {
       type: String
     },
-    userPassword: {
+    user_password: {
       type: String
     }
   },
   {
-    collection: "users"
+    collection: "user"
   }
 );
 
-module.exports = mongoose.model("User", User);
+UserSchema.statics.authenticate = function(
+  gbc_number,
+  user_password,
+  callback
+) {
+  User.findOne({ gbc_number: gbc_number }).exec(function(err, user) {
+    if (err) {
+      return callback(err);
+    } else if (!user) {
+      var err = new Error("User not found.");
+      err.status = 401;
+      return callback(err);
+    }
+    if (user_password === user.user_password) {
+      return callback(null, user);
+    } else {
+      return callback();
+    }
+  });
+};
+const User = mongoose.model("User", UserSchema);
+module.exports = User;
