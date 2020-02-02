@@ -5,10 +5,11 @@ import { UserSignupComponent } from "./component/user-signup/user-signup.compone
 import { UserDashboardComponent } from "./component/user-dashboard/user-dashboard.component";
 import { UserHistoryComponent } from './component/user-history/user-history.component';
 import { UserCommentComponent } from './component/user-comment/user-comment.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, UserSignupComponent, UserDashboardComponent, UserHistoryComponent, UserCommentComponent],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
