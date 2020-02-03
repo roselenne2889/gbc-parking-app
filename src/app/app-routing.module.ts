@@ -24,4 +24,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 export const routingComponent = [UserSignupComponent, UserDashboardComponent, UserHistoryComponent, UserCommentComponent,
-    ReturnDashComponent]
+    ReturnDashComponent, CancelComponent, SubmitComponent]
