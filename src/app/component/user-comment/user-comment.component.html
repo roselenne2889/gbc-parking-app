@@ -5,20 +5,21 @@
 
 
 <div class='history'> 
+    
     <h3 class="center">
         Please fill out your comment below
     </h3>
     <h4>
         Comment
     </h4>
-    <textarea name="comment" id="comment"></textarea>
+    <input name="comment" id="comment">
+    <div [hidden]="comment.valid || comment.pristine"
+    class="alert alert-danger">
+        Please Fill out the comment Property!
+    </div>
 
+    <button (click)="submitComment">Submit</button>
+    <button><a [routerLink]="['/user-dashboard']">2</a></button>
 
-
-    <button>1</button>
-    <button>2</button>
-
-    <submit-comment></submit-comment>
-    <cancel></cancel>
 </div>
 </div>
