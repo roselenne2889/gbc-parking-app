@@ -3,3 +3,8 @@ export class Admin {
   adminNumber: Number;
   adminPassword: String;
 }
+
+export class AdminLogin {
+  admin_number: Number;
+  admin_password: String;
+}

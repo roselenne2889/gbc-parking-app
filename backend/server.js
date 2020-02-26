@@ -22,6 +22,8 @@ mongoose
 
 // Setting up port with express js
 const userRoute = require("../backend/routes/user.route");
+const commentRoute = require("../backend/routes/comment.route");
+const adminRoute = require("../backend/routes/admin.route");
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -33,6 +35,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "dist/gbc-parking-app")));
 app.use("/", express.static(path.join(__dirname, "dist/gbc-parking-app")));
 app.use("/api", userRoute);
+app.use("/api/comment", commentRoute);
+app.use("/api/admin", adminRoute);
 
 // Create port
 const port = process.env.PORT || 4000;
@@ -46,7 +50,7 @@ app.use((req, res, next) => {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   console.error(err.message); // Log error message in our server's console
   if (!err.statusCode) err.statusCode = 500; // If err has no specified error code, set error code to 'Internal Server Error (500)'
   res.status(err.statusCode).send(err.message); // All HTTP requests must have a response, so let's send back an error with its status code and message

@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { User, UserLogin } from "./user";
-import { Admin } from "./admin";
+import { Comment } from "./comment";
+import { Admin, AdminLogin } from "./admin";
 import { Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import {
@@ -43,7 +44,25 @@ export class ApiService {
     return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
   }
 
+  //Add comment
+  AddComment(data: any): Observable<any> {
+    const API_URL = `${this.endpoint}/comment/submit-comment`;
+    return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+  }
+
+  //Admin login
+  AdminLogin(data: AdminLogin): Observable<any> {
+    const API_URL = `${this.endpoint}/admin/login`;
+    return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+  }
+
+  // Get lots
+
   SetUserLoginSession() {
+    window.sessionStorage.setItem("isLoggedIn", "true");
+  }
+
+  SetAdminLoginSession() {
     window.sessionStorage.setItem("isLoggedIn", "true");
   }
 }

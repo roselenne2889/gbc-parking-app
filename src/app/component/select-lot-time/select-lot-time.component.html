@@ -1,0 +1,18 @@
+<p>Please select the parking lot and times you would like</p>
+
+<form
+  [formGroup]="selectLotForm"
+  (ngSubmit)="submitLotForm()"
+  #resetLotForm="ngForm"
+  novalidate
+>
+  <mat-form-field>
+    <mat-select>
+      <mat-label>Lot</mat-label>
+      <mat-option [value]="lot" *ngFor="let lot of lots">{{lot}} </mat-option>
+    </mat-select>
+    <mat-error *ngIf="handleError('lot', 'required')">
+      Lot is required
+    </mat-error>
+  </mat-form-field>
+</form>

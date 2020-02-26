@@ -9,13 +9,16 @@
   #resetUserLoginForm="ngForm"
   novalidate
 >
-  <!-- Left block -->
   <mat-card>
-    <div class="controlers-wrapper">
+    <div class="controllers-wrapper">
       <mat-form-field>
-        <input matInput placeholder="GBC Number" formControlName="gbcNumber" />
-        <mat-error *ngIf="handleError('gbcNumber', 'required')">
-          You must enter a &nbsp;<strong>GBC number</strong>
+        <input
+          matInput
+          placeholder="GBC Number"
+          formControlName="admin_number"
+        />
+        <mat-error *ngIf="handleError('admin_number','required')">
+          You must enter a GBC number
         </mat-error>
       </mat-form-field>
       <mat-form-field>
@@ -23,19 +26,14 @@
           matInput
           type="password"
           placeholder="Password"
-          formControlName="adminPassword"
+          formControlName="admin_password"
         />
-        <mat-error *ngIf="handleError('password', 'required')">
-          You must enter a &nbsp;<strong>password</strong>
+        <mat-error *ngIf="handleError('admin_password','required')">
+          You must enter a password
         </mat-error>
       </mat-form-field>
       <div class="full-wrapper button-wrapper">
-        <button type="submit">Login</button>
-        <button [routerLink]="['/admin-dashboard/']">Login</button>
-        <button type="submit" [disabled]="!userLoginForm.valid">Login</button>
-        <button [routerLink]="['/user-dashboard/']">Login</button>
-        <button type="submit">Admin</button>
-        <button [routerLink]="['/admin-login/']">Admin</button>
+        <button type="submit" [disabled]="!adminLoginForm.valid">Log in</button>
       </div>
     </div>
   </mat-card>

@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 
 let AdminSchema = new Schema(
   {
-    adminNumber: {
+    admin_number: {
       type: Number
     },
-    adminPassword: {
-      type: string
+    admin_password: {
+      type: String
     }
   },
   {
@@ -20,16 +20,16 @@ AdminSchema.statics.authenticate = function(
   adminPassword,
   callback
 ) {
-  Admin.findOne({ adminNumber: adminNumber }).exec(function(err, anum) {
+  Admin.findOne({ admin_number: adminNumber }).exec(function(err, admin) {
     if (err) {
       return callback(err);
-    } else if (!anum) {
-      var err = new Error("User not found.");
+    } else if (!admin) {
+      var err = new Error("Admin not found.");
       err.status = 401;
       return callback(err);
     }
-    if (adminPassword === anum.adminNumber) {
-      return callback(null, anum);
+    if (adminPassword === admin.admin_password) {
+      return callback(null, admin);
     } else {
       return callback();
     }

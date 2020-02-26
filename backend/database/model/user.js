@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const Comment = require("./comments");
+const Reservation = require("./reservation");
+
 // Define collection and schema
 let UserSchema = new Schema(
   {
@@ -18,7 +21,9 @@ let UserSchema = new Schema(
     },
     user_password: {
       type: String
-    }
+    },
+    comments: [Comment],
+    reservation: Reservation
   },
   {
     collection: "user"
