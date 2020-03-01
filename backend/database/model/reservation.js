@@ -22,4 +22,4 @@ let ReservationSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("Reservation", ReservationSchema);
+module.exports = ReservationSchema;
