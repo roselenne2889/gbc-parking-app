@@ -1,18 +1,61 @@
 <p>Please select the parking lot and times you would like</p>
 
-<form
-  [formGroup]="selectLotForm"
-  (ngSubmit)="submitLotForm()"
-  #resetLotForm="ngForm"
-  novalidate
->
-  <mat-form-field>
-    <mat-select>
-      <mat-label>Lot</mat-label>
-      <mat-option [value]="lot" *ngFor="let lot of lots">{{lot}} </mat-option>
-    </mat-select>
-    <mat-error *ngIf="handleError('lot', 'required')">
-      Lot is required
-    </mat-error>
-  </mat-form-field>
-</form>
+<div class="inner-wrapper">
+  <form
+    [formGroup]="lotTimeForm"
+    (ngSubmit)="submitLotTimeForm()"
+    #resetLotTimeForm="ngForm"
+    novalidate
+  >
+    <mat-card>
+      <div class="controlers-wrapper">
+        <mat-form-field>
+          <mat-label>Lot</mat-label>
+          <mat-select formControlName="lot">
+            <mat-option [value]="lot" *ngFor="let lot of lots"
+              >{{ lot }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="handleError('lot', 'required')">
+            Lot is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Start</mat-label>
+          <mat-select formControlName="startTime">
+            <mat-option [value]="time" *ngFor="let time of times"
+              >{{ time }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="handleError('time', 'required')">
+            Time is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>End</mat-label>
+          <mat-select formControlName="endTime">
+            <mat-option [value]="time" *ngFor="let time of times"
+              >{{ time }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="handleError('time', 'required')">
+            Time is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+          <button
+            type="submit"
+            mat-flat-button
+            color="warn"
+            [disabled]="!lotTimeForm.valid"
+          >
+            Submit
+          </button>
+        </div>
+        <button [routerLink]="['/login']">Log Out</button>
+      </div>
+    </mat-card>
+  </form>
+</div>
