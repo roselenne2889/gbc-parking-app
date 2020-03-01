@@ -1,15 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let lateFeesSchema = new Schema({
+const paymentHistorySchema = new Schema({
     date: {
         type: Date
     },
-    amountOwed: {
+    reservation_number: {
         type: Number
     },
-    reservation_number: {
+    amount: {
         type: Number
     }
 });
-module.exports = mongoose.Model("LateFees", lateFeesSchema);
+
+module.exports = mongoose.model("PaymentHistory", paymentHistorySchema);

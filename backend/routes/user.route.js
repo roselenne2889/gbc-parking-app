@@ -3,55 +3,102 @@ const app = express();
 const userRoute = express.Router();
 
 // user model
-let User = require("../database/model/user");
+const User = require("../database/model/user");
+const PaymentHistory = require("../database/model/reservation-history");
 
 // Add User
 userRoute.route("/user-signup").post((req, res, next) => {
-  User.create(req.body, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+    User.create(req.body, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.json(data);
+        }
+    });
 });
 
 // Get All Users
 userRoute.route("/").get((req, res) => {
-  User.find((error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+    User.find((error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            res.json(data);
+        }
+    });
 });
 
 // Get single user
-userRoute.route("/read-user/:id").get((req, res) => {
-  User.findById(req.params.id, (error, data) => {
-    if (error) {
-      return next(error);
-    } else {
-      res.json(data);
-    }
-  });
+userRoute.route("/read-user/").post((req, res, next) => {
+    User.findOne({ gbc_number: req.body.gbc_number }, (error, data) => {
+        if (error) {
+            return next(error);
+        }
+        res.json(data);
+    });
 });
 
+// User login
 userRoute.route("/login").post((req, res, next) => {
-  if (req.body.gbc_number && req.body.user_password) {
-    User.authenticate(req.body.gbc_number, req.body.user_password, function(
-      error,
-      user
-    ) {
-      if (error || !user) {
-        var err = new Error("Wrong GBC number or password.");
-        err.status = 401;
-        return next(err);
-      } else {
-        return res.json(user);
-      }
-    });
-  }
+    if (req.body.gbc_number && req.body.user_password) {
+        User.authenticate(req.body.gbc_number, req.body.user_password, function(
+            error,
+            user
+        ) {
+            if (error || !user) {
+                var err = new Error("Wrong GBC number or password.");
+                err.status = 401;
+                return next(err);
+            } else {
+                return res.json(user);
+            }
+        });
+    }
 });
+
+// User logout
+
+// Create reservation (update?)
+userRoute.route("/create-reservation").post((req, res, next) => {
+    User.findOne({ gbc_number: req.body.gbc_number }, (err, user) => {
+        if (err) {
+            return next(err);
+        } else if (!user) {
+            var error = new Error("User not found.");
+            error.status = 401;
+            return next(error);
+        }
+        user.updateOne(
+            { reservation: req.body.reservation },
+            (err, updateRes) => {
+                if (err) {
+                    return next(err);
+                }
+                res.json(updateRes);
+                // Add to payment history
+            }
+        );
+    });
+});
+
+// Cancel reservation
+userRoute.route("/cancel-reservation").post((req, res, next) => {
+    User.findOne({ gbc_number: req.body.gbc_number }, (err, user) => {
+        if (err) {
+            return next(err);
+        } else if (!user) {
+            var error = new Error("User not found.");
+            error.status = 401;
+            return next(error);
+        }
+        user.reservation.remove();
+        user.save((err, saveRes) => {
+            if (err) {
+                return next(err);
+            }
+            res.json(saveRes);
+        });
+    });
+});
+
 module.exports = userRoute;
