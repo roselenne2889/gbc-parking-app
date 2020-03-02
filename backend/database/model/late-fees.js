@@ -12,4 +12,4 @@ let lateFeesSchema = new Schema({
         type: Number
     }
 });
-module.exports = mongoose.Model("LateFees", lateFeesSchema);
+module.exports = mongoose.model("LateFees", lateFeesSchema);

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 let CommentSchema = new Schema(
     {
-        comment: {
+        comment_text: {
             type: String
         }
     },
@@ -12,4 +12,4 @@ let CommentSchema = new Schema(
     }
 );
 const Comment = mongoose.model("Comment", CommentSchema);
-module.exports = CommentSchema;
+module.exports = Comment;

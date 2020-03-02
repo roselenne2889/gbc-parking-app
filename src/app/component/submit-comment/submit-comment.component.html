@@ -1,24 +1,28 @@
 <p>Please fill out your comment below</p>
 
 <form
-  [formGroup]="commentForm"
-  (ngSubmit)="submitCommentForm()"
-  #resetCommentForm="ngForm"
-  novalidate
+    [formGroup]="commentForm"
+    (ngSubmit)="submitCommentForm()"
+    #resetCommentForm="ngForm"
+    novalidate
 >
-  <mat-form-field class="example-full-width">
-    <textarea
-      matInput
-      placeholder="Comment"
-      formControlName="comment"
-    ></textarea>
-  </mat-form-field>
-  <div class="full-wrapper button-wrapper">
-    <div class="button-wrapper">
-      <button type="submit" [disabled]="!commentForm.valid">Submit</button>
+    <mat-form-field class="example-full-width">
+        <textarea
+            matInput
+            placeholder="Comment"
+            formControlName="comment_text"
+        ></textarea>
+    </mat-form-field>
+    <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+            <button type="submit" [disabled]="!commentForm.valid">
+                Submit
+            </button>
+        </div>
+        <div class="button-wrapper">
+            <button type="button" [routerLink]="['/user-dashboard']">
+                Back
+            </button>
+        </div>
     </div>
-    <div class="button-wrapper">
-      <button type="button" [routerLink]="['/user-dashboard']">Back</button>
-    </div>
-  </div>
 </form>

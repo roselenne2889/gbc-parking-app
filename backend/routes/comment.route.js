@@ -7,28 +7,27 @@ let User = require("../database/model/user");
 
 // Add Comment
 commentRoute.route("/submit-comment").post((req, res, next) => {
-    Comment.create(req.body.comment_text, (error, savedComment) => {
+    Comment.create(req.body, (error, savedComment) => {
         if (error) {
             return next(error);
-        } else {
-            User.findOne({ gbc_number: req.body.gbc_number }, (error, user) => {
-                if (error) {
-                    return next(error);
-                } else if (!user) {
-                    var err = new Error("User not found.");
-                    err.status = 401;
-                    return next(err);
-                }
-                user.comments.push(savedComment._id);
-                user.save((saveError, updatedUser) => {
-                    if (saveError) {
-                        return next(saveError);
-                    } else {
-                        res.json(updatedUser);
-                    }
-                });
-            });
         }
+        User.findOne({ gbc_number: req.body.gbc_number }, (error, user) => {
+            if (error) {
+                return next(error);
+            } else if (!user) {
+                var err = new Error("User not found.");
+                err.status = 401;
+                return next(err);
+            }
+            user.comments.push(savedComment._id);
+            user.save((saveError, updatedUser) => {
+                if (saveError) {
+                    return next(saveError);
+                } else {
+                    res.json(updatedUser);
+                }
+            });
+        });
     });
 });
 
