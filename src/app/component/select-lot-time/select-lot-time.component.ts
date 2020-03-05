@@ -3,11 +3,6 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ApiService } from "../../shared/api.service";
 
-export interface Lot {
-  value: String;
-  viewValue: String;
-}
-
 @Component({
   selector: "app-select-lot-time",
   templateUrl: "./select-lot-time.component.html",

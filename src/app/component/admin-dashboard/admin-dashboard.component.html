@@ -1,4 +1,9 @@
-<a [routerLink]="['/select-user']">View User Information</a>&nbsp;
-<a [routerLink]="['/view-comment']">View Comments</a>&nbsp;
-<p>Welcome, Admin!</p>
-<button [routerLink]="['/admin-login']">Log Out</button>
+<div class="container admin-dashboard-container">
+  <div align="right">
+    <p>Welcome, Admin!</p>
+    <button [routerLink]="['/admin-login']">Log Out</button>
+  </div>
+  <a [routerLink]="['/select-user']">View User Information</a>&nbsp;
+  <b>|</b>&nbsp; <a [routerLink]="['/view-comment']">View Comments</a>&nbsp;
+  <img src="../../../assets/rsz_cars.jpg" />
+</div>

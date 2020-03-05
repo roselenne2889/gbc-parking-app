@@ -1,3 +1,7 @@
-.body {
-  background-color: bisque;
+.user-dashboard-container {
+  background-color: orange;
+}
+.button {
+  position: absolute;
+  right: 50%;
 }
