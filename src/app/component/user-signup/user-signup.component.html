@@ -3,7 +3,6 @@
   <div class="col">
     <div class="title-group">
       <h1 class="mat-h1">Sign Up</h1>
-      <mat-divider fxFlex="1 0"></mat-divider>
     </div>
 
     <!--Form-->
@@ -76,15 +75,17 @@
               </mat-error>
             </mat-form-field>
           </div>
+          <br />
           <div class="full-wrapper button-wrapper">
             <button
               type="submit"
-              mat_flat-button
-              color="warn"
+              mat-flat-button
+              color="primary"
               [disabled]="!userForm.valid"
             >
               Submit
             </button>
+            &nbsp;
 
             <button
               type="button"

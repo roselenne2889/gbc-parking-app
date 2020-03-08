@@ -2,7 +2,6 @@
   <div class="col">
     <div class="title-group">
       <h1 class="mat-h1">Account Login</h1>
-      <mat-divider fxFlex="1 0"></mat-divider>
     </div>
 
     <form
@@ -35,11 +34,25 @@
               You must enter a password
             </mat-error>
           </mat-form-field>
+          <br />
+          &nbsp;
           <div class="full-wrapper button-wrapper">
-            <button type="submit" [disabled]="!userLoginForm.valid">
+            <button
+              type="submit"
+              mat-flat-button
+              color="primary"
+              [disabled]="!userLoginForm.valid"
+            >
               Log in
             </button>
-            <button [routerLink]="['/user-signup']">Register</button>
+            &nbsp;
+            <button
+              mat-flat-button
+              color="accent"
+              [routerLink]="['/user-signup']"
+            >
+              Register
+            </button>
           </div>
         </div>
       </mat-card>

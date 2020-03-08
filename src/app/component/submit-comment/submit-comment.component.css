@@ -1,0 +1,16 @@
+.comment-container {
+  margin-top: 50px;
+}
+p {
+  margin-top: 50px;
+}
+mat-form-field {
+  height: 100px;
+  width: 350px;
+}
+textarea {
+  height: 150px;
+}
+.logout-container {
+  margin-right: 100px;
+}

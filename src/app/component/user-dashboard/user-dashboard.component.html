@@ -8,43 +8,47 @@
   <a [routerLink]="['/payment-history']">Payment History</a>&nbsp;
   <b>|</b>&nbsp; <a [routerLink]="['/late-fees']">Late Fees</a>&nbsp;
   <b>|</b>&nbsp;
-  <a [routerLink]="['/submit-comment']">Submit a Comment</a>&nbsp;
-
-  <button [routerLink]="['/login']">Log Out</button>
-  <br />
-  <br />
+  <a [routerLink]="['/submit-comment']">Submit a Comment</a>
+  <div align="right">
+    <button mat-flat-button color="warn" [routerLink]="['/login']">
+      Log Out
+    </button>
+  </div>
   <br />
   <p>
     Welcome to the GBC Parking Reservation App. Here are a few important things
     to note:
   </p>
-
-  <b><u>Make a Reservation</u> </b><br /><br />
-  <p>
-    You can reserve a parking spot at any of the three parking lots available at
-    Casa Loma Campus. You may only reserve a spot if the spot is not taken and
-    for a maximum time of 2 hours. You will be required to pay for the
-    reservation at the time of confirmation. There is an option to extend your
-    reservation, but only if there are no current reservations at the specified
-    time and only up to a maximum time of 2 hours. Additional payment will be
-    required if you choose to extend
-  </p>
-
-  <b><u>Cancellation</u></b
-  ><br /><br />
-  <p>
-    You may choose to cancel your reservation only if your reservation time has
-    not yet started. The process is irreversible and your payment will be
-    refunded.
-  </p>
-
-  <b><u>Late Fees</u></b>
-  <br /><br />
-  <p>
-    In the event that you stay past your scheduled time, you will be charged a
-    late fee. You can click on the "late fees" link to view the amount owed.
-  </p>
-  <br />
-  <h1><b>We hope you will enjoy using the app!</b></h1>
-  <img src="../../../assets/rsz_car.jpg" />
 </div>
+<div class="container dashboard-text-container">
+  <div align="left">
+    <b><u>Make a Reservation</u> </b><br /><br />
+    <p>
+      You can reserve a parking spot at any of the three parking lots available
+      at Casa Loma Campus. You may only reserve a spot if the spot is not taken
+      and for a maximum time of 2 hours. You will be required to pay for the
+      reservation at the time of confirmation. There is an option to extend your
+      reservation, but only if there are no current reservations at the
+      specified time and only up to a maximum time of 2 hours. Additional
+      payment will be required if you choose to extend
+    </p>
+
+    <b><u>Cancellation</u></b
+    ><br /><br />
+    <p>
+      You may choose to cancel your reservation only if your reservation time
+      has not yet started. The process is irreversible and your payment will be
+      refunded.
+    </p>
+
+    <b><u>Late Fees</u></b>
+    <br /><br />
+    <p>
+      In the event that you stay past your scheduled time, you will be charged a
+      late fee. You can click on the "late fees" link to view the amount owed.
+    </p>
+    <br />
+  </div>
+</div>
+<h1><b>We hope you will enjoy using the app!</b></h1>
+<img src="../../../assets/rsz_car.jpg" />

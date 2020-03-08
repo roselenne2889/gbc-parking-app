@@ -1,7 +1,7 @@
-.user-dashboard-container {
-  background-color: orange;
-}
 .button {
   position: absolute;
   right: 50%;
+}
+.dashboard-text-container {
+  text-align: left;
 }
