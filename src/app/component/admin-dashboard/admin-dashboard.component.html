@@ -1,9 +1,12 @@
 <div class="container admin-dashboard-container">
   <div align="right">
     <p>Welcome, Admin!</p>
-    <button [routerLink]="['/admin-login']">Log Out</button>
+    <button mat-flat-button color="warn" [routerLink]="['/admin-login']">
+      Log Out
+    </button>
   </div>
   <a [routerLink]="['/select-user']">View User Information</a>&nbsp;
   <b>|</b>&nbsp; <a [routerLink]="['/view-comment']">View Comments</a>&nbsp;
-  <img src="../../../assets/rsz_cars.jpg" />
 </div>
+<br />
+<img src="../../../assets/rsz_cars.jpg" />

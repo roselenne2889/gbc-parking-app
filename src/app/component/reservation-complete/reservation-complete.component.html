@@ -1,1 +1,14 @@
-<p>reservation-complete works!</p>
+<div class="container button-container">
+  <div align="right">
+    <button mat-flat-button color="warn" [routerLink]="['/login']">
+      Logout
+    </button>
+  </div>
+</div>
+<div class="container res-complete-container">
+  <p>Reservation Complete</p>
+  <p>Reservation Id: 5685934</p>
+  <button mat-flat-button color="primary" [routerLink]="['/user-dashboard']">
+    Return to Dashboard
+  </button>
+</div>

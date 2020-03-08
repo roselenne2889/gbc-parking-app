@@ -1,40 +1,52 @@
-<div class="title-group">
-  <h1 class="mat-h1">Admin Login</h1>
-  <mat-divider fxFlex="1 0"></mat-divider>
-</div>
-
-<form
-  [formGroup]="adminLoginForm"
-  (ngSubmit)="submitAdminLoginForm()"
-  #resetUserLoginForm="ngForm"
-  novalidate
->
-  <mat-card>
-    <div class="controllers-wrapper">
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="GBC Number"
-          formControlName="admin_number"
-        />
-        <mat-error *ngIf="handleError('admin_number','required')">
-          You must enter a GBC number
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input
-          matInput
-          type="password"
-          placeholder="Password"
-          formControlName="admin_password"
-        />
-        <mat-error *ngIf="handleError('admin_password','required')">
-          You must enter a password
-        </mat-error>
-      </mat-form-field>
-      <div class="full-wrapper button-wrapper">
-        <button type="submit" [disabled]="!adminLoginForm.valid">Log in</button>
-      </div>
+<div class="container admin-login-container">
+  <div class="col">
+    <div class="title-group">
+      <h1 class="mat-h1">Admin Login</h1>
     </div>
-  </mat-card>
-</form>
+
+    <form
+      [formGroup]="adminLoginForm"
+      (ngSubmit)="submitAdminLoginForm()"
+      #resetUserLoginForm="ngForm"
+      novalidate
+    >
+      <mat-card>
+        <div class="controllers-wrapper">
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="GBC Number"
+              formControlName="admin_number"
+            />
+            <mat-error *ngIf="handleError('admin_number','required')">
+              You must enter a GBC number
+            </mat-error>
+          </mat-form-field>
+          <br />
+          <mat-form-field>
+            <input
+              matInput
+              type="password"
+              placeholder="Password"
+              formControlName="admin_password"
+            />
+            <mat-error *ngIf="handleError('admin_password','required')">
+              You must enter a password
+            </mat-error>
+          </mat-form-field>
+          <br /><br />
+          <div class="full-wrapper button-wrapper">
+            <button
+              type="submit"
+              mat-flat-button
+              color="primary"
+              [disabled]="!adminLoginForm.valid"
+            >
+              Log in
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>

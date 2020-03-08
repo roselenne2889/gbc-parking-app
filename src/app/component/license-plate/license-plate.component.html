@@ -1,28 +1,15 @@
-<p>Please enter your license plate number</p>
-<!-- <form
-  [formGroup]="licensePlateForm"
-  (ngSubmit)="submitLicensePlateForm()"
-  #resetLicensePlateForm="ngForm"
-  novalidate
->
-  <mat-card>
-    <div class="controllers-wrapper">
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="License Plate Number"
-          formControlName="license_plate"
-        />
-        <mat-error *ngIf="handleError('license_plate','required')">
-          You must enter in a license plate number
-        </mat-error>
-      </mat-form-field>
-      <div class="full-wrapper button-wrapper">
-        <button type="submit" [disabled]="!licensePlateForm.valid">
-          Continue
-        </button>
-        <button [routerLink]="['/clb-spots']">Back</button>
-      </div>
-    </div>
-  </mat-card>
-</form> -->
+<div align="right">
+  <button mat-flat-button color="warn" [routerLink]="['/login']">Logout</button>
+</div>
+<div class="container license-container">
+  <p>Please enter your license plate number</p>
+  <textarea></textarea>
+  <br />
+  <button mat-flat-button color="primary" [routerLink]="['/conf-res-reserve']">
+    Continue
+  </button>
+  &nbsp;
+  <button mat-flat-button color="accent" [routerLink]="['/clb-spots']">
+    Back
+  </button>
+</div>

@@ -1,61 +1,55 @@
+<div class="container button-container">
+  <div align="right">
+    <button mat-flat-button color="warn" [routerLink]="['/login']">
+      Log Out
+    </button>
+  </div>
+</div>
 <p>Please select the parking lot and times you would like</p>
-
-<!-- <div class="inner-wrapper">
-  <form
-    [formGroup]="lotTimeForm"
-    (ngSubmit)="submitLotTimeForm()"
-    #resetLotTimeForm="ngForm"
-    novalidate
+<div class="container dropdown-container">
+  <mat-form-field>
+    <mat-label>Lot</mat-label>
+    <select matNativeControl required>
+      <option value="clb">CLB</option>
+      <option value="clc">CLC</option>
+      <option value="cld">CLD</option>
+    </select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <mat-label>Start</mat-label>
+    <select matNativeControl required>
+      <option value="8am">8am</option>
+      <option value="830am">8:30am</option>
+      <option value="9am">9am</option>
+      <option value="930am">9:30am</option>
+      <option value="1000am">10am</option>
+      <option value="1030">10:30am</option>
+    </select>
+  </mat-form-field>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <mat-form-field>
+    <mat-label>End</mat-label>
+    <select matNativeControl required>
+      <option value="8am">8am</option>
+      <option value="830am">8:30am</option>
+      <option value="9am">9am</option>
+      <option value="930am">9:30am</option>
+      <option value="1000am">10am</option>
+      <option value="1030">10:30am</option>
+    </select>
+  </mat-form-field>
+  <br /><br />
+  <button
+    type="submit"
+    mat-flat-button
+    color="primary"
+    [routerLink]="['/clb-spots']"
   >
-    <mat-card>
-      <div class="controlers-wrapper">
-        <mat-form-field>
-          <mat-label>Lot</mat-label>
-          <mat-select formControlName="lot">
-            <mat-option [value]="lot" *ngFor="let lot of lots"
-              >{{ lot }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="handleError('lot', 'required')">
-            Lot is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Start</mat-label>
-          <mat-select formControlName="startTime">
-            <mat-option [value]="time" *ngFor="let time of times"
-              >{{ time }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="handleError('time', 'required')">
-            Time is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>End</mat-label>
-          <mat-select formControlName="endTime">
-            <mat-option [value]="time" *ngFor="let time of times"
-              >{{ time }}
-            </mat-option>
-          </mat-select>
-          <mat-error *ngIf="handleError('time', 'required')">
-            Time is required
-          </mat-error>
-        </mat-form-field>
-      </div>
-      <div class="full-wrapper button-wrapper">
-        <div class="button-wrapper">
-          <button
-            type="submit"
-            mat-flat-button
-            color="warn"
-            [disabled]="!lotTimeForm.valid"
-          >
-            Submit
-          </button>
-        </div>
-        <button [routerLink]="['/login']">Log Out</button>
-      </div>
-    </mat-card>
-  </form>
-</div> -->
+    Submit
+  </button>
+  &nbsp;&nbsp;
+  <button mat-flat-button color="warn" [routerLink]="['/user-dashboard']">
+    Back
+  </button>
+</div>

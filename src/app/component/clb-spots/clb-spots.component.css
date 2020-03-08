@@ -1,7 +1,38 @@
 mat-grid-tile {
   background: green;
+  padding-bottom: auto;
+  height: 50px;
+  width: 800px;
+  cursor: pointer;
 }
 
 .unavailable {
   background-color: white;
+}
+
+mat-grid-list {
+  margin-top: 0px;
+  width: 800px;
+  margin-left: 150px;
+}
+.button-container {
+  margin-top: 50px;
+}
+p {
+  margin-top: 100px;
+}
+.legend-container {
+  max-width: 200px;
+}
+.color-container1 {
+  height: 30px;
+  width: 30px;
+  background-color: green;
+  margin-left: 300px;
+}
+.color-container2 {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  margin-left: 300px;
 }
