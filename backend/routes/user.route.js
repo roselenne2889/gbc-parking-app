@@ -18,12 +18,43 @@ userRoute.route("/user-signup").post((req, res, next) => {
 });
 
 // Get All Users
-userRoute.route("/").get((req, res) => {
+userRoute.route("/").get((req, res, next) => {
     User.find((error, data) => {
         if (error) {
             return next(error);
         } else {
             res.json(data);
+        }
+    });
+});
+
+// Get all comments
+userRoute.route("/all-comments").get((req, res, next) => {
+    User.find((error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            const populateOptions = {
+                path: "comments"
+            };
+            User.populate(data, populateOptions, (err, docs) => {
+                if (err) {
+                    return next(err);
+                }
+                const userComments = [];
+                docs.forEach(user => {
+                    user.get("comments").forEach(comment => {
+                        userComments.push({
+                            name: `${user.get("first_name")} ${user.get(
+                                "last_name"
+                            )}`,
+                            email: `${user.get("email")}`,
+                            comment: `${comment.comment_text}`
+                        });
+                    });
+                });
+                res.json(userComments);
+            });
         }
     });
 });
