@@ -6,8 +6,8 @@ const LotSchema = require("../database/model/lot");
 const SpotSchema = require("../database/model/spot");
 const User = require("../database/model/user");
 
-const Lot = mongoose.Model("Lot", LotSchema);
-const Spot = mongoose.Model("Spot", SpotSchema);
+const Lot = mongoose.model("Lot", LotSchema);
+const Spot = mongoose.model("Spot", SpotSchema);
 
 // Get all lots
 lotRoute.route("/").get((req, res, next) => {
@@ -38,7 +38,14 @@ lotRoute.route("/get-taken").post((req, res, next) => {
         "reservation.lot.lot_name": req.body.lot_name
     }).cursor();
     takenCursor.next((cursorError, userDoc) => {
-        takenSpots.push(userDoc.reservation.spot.spot_name);
+        if (cursorError) {
+            return next(cursorError);
+        }
+        if (userDoc && userDoc.reservation) {
+            takenSpots.push(userDoc.reservation.spot.spot_name);
+        }
     });
     res.json(takenSpots);
 });
+
+module.exports = lotRoute;

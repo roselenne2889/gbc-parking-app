@@ -1,29 +1,22 @@
 <div class="container button-container">
-  <div align="right">
-    <button mat-flat-button color="warn" [routerLink]="['/login']">
-      Logout
-    </button>
-  </div>
+    <div align="right">
+        <button mat-flat-button color="warn" [routerLink]="['/login']">
+            Logout
+        </button>
+    </div>
 </div>
 <div class="container confirmation-container">
-  <p>Please confirm your reservation details below</p>
-  <textarea>
-    Lot: CLB
-    Slot Number: 15
-    Time: 8a.m-9a.m
-    License Plate Number: ABC123
-</textarea
-  >
-  <br />
-  <button
-    mat-flat-button
-    color="primary"
-    [routerLink]="['/reservation-complete']"
-  >
-    Reserve
-  </button>
-  &nbsp;&nbsp;
-  <button mat-flat-button color="accent" [routerLink]="['/license-plate']">
-    Back
-  </button>
+    <p>Please confirm your reservation details below</p>
+    <p>Lot: {{ reservation.lot.lot_name }}</p>
+    <p>Spot number: {{ reservation.spot.spot_name }}</p>
+    <p>Time: {{ reservation.start_time }}–{{ reservation.end_time }}</p>
+    <p>License plate number: {{ reservation.license_plate_number }}</p>
+    <br />
+    <button mat-flat-button color="primary" (click)="createReservation()">
+        Reserve
+    </button>
+    &nbsp;&nbsp;
+    <button mat-flat-button color="accent" [routerLink]="['/license-plate']">
+        Back
+    </button>
 </div>

@@ -21,9 +21,13 @@ export class DataService {
             lot_name: "CLD" // TO DO: Change as needed
         }
     ];
-    reservation: Reservation;
+    reservation: Reservation = new Reservation();
 
     updateReservation(reservation) {
-        this.reservation = Object.assign({}, reservation);
+        Object.assign(this.reservation, reservation);
+    }
+
+    getReservation() {
+        return Object.assign({}, this.reservation);
     }
 }

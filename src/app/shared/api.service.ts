@@ -9,6 +9,9 @@ import {
     HttpHeaders,
     HttpErrorResponse
 } from "@angular/common/http";
+import { Lot } from "./lot";
+import { Reservation } from "./reservation";
+import { ReservationRequest } from "./reservation-request";
 
 @Injectable({
     providedIn: "root"
@@ -69,7 +72,17 @@ export class ApiService {
         return this.http.get(API_URL).pipe(catchError(this.errorMgmt));
     }
 
-    // Get lots
+    // Get spots that are taken
+    GetTakenSpots(data: Lot): Observable<any> {
+        const API_URL = `${this.endpoint}/lot/get-taken`;
+        return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
+
+    // Create (and update) reservation
+    CreateReservation(data: ReservationRequest): Observable<any> {
+        const API_URL = `${this.endpoint}/create-reservation`;
+        return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
 
     SetUserLoginSession() {
         window.sessionStorage.setItem("isLoggedIn", "true");

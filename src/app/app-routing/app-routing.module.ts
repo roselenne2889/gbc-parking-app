@@ -88,7 +88,7 @@ const routes: Routes = [
     },
 
     {
-        path: "conf-res-reserve",
+        path: "confirm-reservation",
         component: ConfResReserveComponent
     },
 
