@@ -25,122 +25,122 @@ import { ViewUserComponent } from "../component/view-user/view-user.component";
 import { SelectUserComponent } from "../component/select-user/select-user.component";
 
 const routes: Routes = [
-  {
-    path: "",
-    pathMatch: "full",
-    redirectTo: "login"
-  },
-  {
-    path: "login",
-    component: LoginComponent
-  },
-  {
-    path: "user-signup",
-    component: UserSignupComponent
-  },
-  {
-    path: "user-dashboard",
-    component: UserDashboardComponent
-  },
+    {
+        path: "",
+        pathMatch: "full",
+        redirectTo: "login"
+    },
+    {
+        path: "login",
+        component: LoginComponent
+    },
+    {
+        path: "user-signup",
+        component: UserSignupComponent
+    },
+    {
+        path: "user-dashboard",
+        component: UserDashboardComponent
+    },
 
-  {
-    path: "submit-comment",
-    component: SubmitCommentComponent
-  },
-  {
-    path: "admin-login",
-    component: AdminLoginComponent
-  },
+    {
+        path: "submit-comment",
+        component: SubmitCommentComponent
+    },
+    {
+        path: "admin-login",
+        component: AdminLoginComponent
+    },
 
-  {
-    path: "view-comment",
-    component: ViewCommentComponent
-  },
+    {
+        path: "view-comment",
+        component: ViewCommentComponent
+    },
 
-  {
-    path: "admin-dashboard",
-    component: AdminDashboardComponent
-  },
+    {
+        path: "admin-dashboard",
+        component: AdminDashboardComponent
+    },
 
-  {
-    path: "select-lot-time",
-    component: SelectLotTimeComponent
-  },
+    {
+        path: "select-lot-time",
+        component: SelectLotTimeComponent
+    },
 
-  {
-    path: "clb-spots",
-    component: ClbSpotsComponent
-  },
+    {
+        path: "select-spot",
+        component: ClbSpotsComponent
+    },
 
-  {
-    path: "clc-spots",
-    component: ClcSpotsComponent
-  },
+    {
+        path: "clc-spots",
+        component: ClcSpotsComponent
+    },
 
-  {
-    path: "cld-spots",
-    component: CldSpotsComponent
-  },
+    {
+        path: "cld-spots",
+        component: CldSpotsComponent
+    },
 
-  {
-    path: "license-plate",
-    component: LicensePlateComponent
-  },
+    {
+        path: "license-plate",
+        component: LicensePlateComponent
+    },
 
-  {
-    path: "conf-res-reserve",
-    component: ConfResReserveComponent
-  },
+    {
+        path: "conf-res-reserve",
+        component: ConfResReserveComponent
+    },
 
-  {
-    path: "reservation-complete",
-    component: ReservationCompleteComponent
-  },
+    {
+        path: "reservation-complete",
+        component: ReservationCompleteComponent
+    },
 
-  {
-    path: "conf-res-cancel",
-    component: ConfResCancelComponent
-  },
+    {
+        path: "conf-res-cancel",
+        component: ConfResCancelComponent
+    },
 
-  {
-    path: "cancel-complete",
-    component: CancelCompleteComponent
-  },
+    {
+        path: "cancel-complete",
+        component: CancelCompleteComponent
+    },
 
-  {
-    path: "extend-reservation",
-    component: ExtendReservationComponent
-  },
+    {
+        path: "extend-reservation",
+        component: ExtendReservationComponent
+    },
 
-  {
-    path: "ext-res-complete",
-    component: ExtResCompleteComponent
-  },
+    {
+        path: "ext-res-complete",
+        component: ExtResCompleteComponent
+    },
 
-  {
-    path: "payment-history",
-    component: PaymentHistoryComponent
-  },
+    {
+        path: "payment-history",
+        component: PaymentHistoryComponent
+    },
 
-  {
-    path: "late-fees",
-    component: LateFeesComponent
-  },
+    {
+        path: "late-fees",
+        component: LateFeesComponent
+    },
 
-  {
-    path: "view-user",
-    component: ViewUserComponent
-  },
+    {
+        path: "view-user",
+        component: ViewUserComponent
+    },
 
-  {
-    path: "select-user",
-    component: SelectUserComponent
-  }
+    {
+        path: "select-user",
+        component: SelectUserComponent
+    }
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    declarations: [],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {}

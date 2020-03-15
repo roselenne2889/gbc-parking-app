@@ -1,55 +1,64 @@
 <div class="container button-container">
-  <div align="right">
-    <button mat-flat-button color="warn" [routerLink]="['/login']">
-      Log Out
-    </button>
-  </div>
+    <div align="right">
+        <button mat-flat-button color="warn" [routerLink]="['/login']">
+            Log Out
+        </button>
+    </div>
 </div>
 <p>Please select the parking lot and times you would like</p>
 <div class="container dropdown-container">
-  <mat-form-field>
-    <mat-label>Lot</mat-label>
-    <select matNativeControl required>
-      <option value="clb">CLB</option>
-      <option value="clc">CLC</option>
-      <option value="cld">CLD</option>
-    </select>
-  </mat-form-field>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <mat-form-field>
-    <mat-label>Start</mat-label>
-    <select matNativeControl required>
-      <option value="8am">8am</option>
-      <option value="830am">8:30am</option>
-      <option value="9am">9am</option>
-      <option value="930am">9:30am</option>
-      <option value="1000am">10am</option>
-      <option value="1030">10:30am</option>
-    </select>
-  </mat-form-field>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <mat-form-field>
-    <mat-label>End</mat-label>
-    <select matNativeControl required>
-      <option value="8am">8am</option>
-      <option value="830am">8:30am</option>
-      <option value="9am">9am</option>
-      <option value="930am">9:30am</option>
-      <option value="1000am">10am</option>
-      <option value="1030">10:30am</option>
-    </select>
-  </mat-form-field>
-  <br /><br />
-  <button
-    type="submit"
-    mat-flat-button
-    color="primary"
-    [routerLink]="['/clb-spots']"
-  >
-    Submit
-  </button>
-  &nbsp;&nbsp;
-  <button mat-flat-button color="warn" [routerLink]="['/user-dashboard']">
-    Back
-  </button>
+    <form
+        [formGroup]="selectLotForm"
+        (ngSubmit)="submitSelectLotForm()"
+        #resetUserLoginForm="ngForm"
+        novalidate
+    >
+        <mat-form-field>
+            <mat-label>Lot</mat-label>
+            <select matNativeControl required formControlName="lot_id">
+                <option
+                    *ngFor="let lot of lots; index as i"
+                    value="lot.lot_name"
+                    >{{ lot.lot_name }}</option
+                >
+            </select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+            <mat-label>Start</mat-label>
+            <select matNativeControl required formControlName="start_time">
+                <option value="8am">8am</option>
+                <option value="830am">8:30am</option>
+                <option value="9am">9am</option>
+                <option value="930am">9:30am</option>
+                <option value="1000am">10am</option>
+                <option value="1030">10:30am</option>
+            </select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+            <mat-label>End</mat-label>
+            <select matNativeControl required formControlName="end_time">
+                <option value="8am">8am</option>
+                <option value="830am">8:30am</option>
+                <option value="9am">9am</option>
+                <option value="930am">9:30am</option>
+                <option value="1000am">10am</option>
+                <option value="1030">10:30am</option>
+            </select>
+        </mat-form-field>
+        <br /><br />
+        <button
+            type="submit"
+            mat-flat-button
+            color="primary"
+            [disabled]="!selectLotForm.valid"
+        >
+            Submit
+        </button>
+        &nbsp;&nbsp;
+        <button mat-flat-button color="warn" [routerLink]="['/user-dashboard']">
+            Back
+        </button>
+    </form>
 </div>
