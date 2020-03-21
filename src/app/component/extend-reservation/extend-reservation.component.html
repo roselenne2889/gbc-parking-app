@@ -1,31 +1,56 @@
-<p>Reservation Details</p>
-<!-- <div class="inner-wrapper">
-  <form
-    [formGroup]="extendForm"
-    (ngSubmit)="submitExtendForm()"
-    #resetExtendForm="ngForm"
-    novalidate
-  >
-    <mat-form-field>
-      <mat-label>Time to extend</mat-label>
-      <select matNativeControl required>
-        <option value="30mins">30 mins</option>
-        <option value="1hour">1 hour</option>
-        <option value="1.5hours">1.5 hours</option>
-        <option value="2hours">2 hours</option>
-      </select>
-    </mat-form-field>
-  </form>
+<div class="container button-container">
+    <div align="right">
+        <button mat-flat-button color="warn" [routerLink]="['/login']">
+            Logout
+        </button>
+    </div>
 </div>
-<div class="full-wrapper button-wrapper">
-  <div class="button-wrapper">
-    <button type="submit" mat_flat-button [disabled]="!extendForm.valid">
-      Submit
-    </button>
-  </div>
-  <div class="button-wrapper">
-    <button type="button" mat-flat-button [routerLink]="['/user-dashboard']">
-      Back
-    </button>
-  </div>
-</div> -->
+<div class="container confirmation-container">
+    <p>Reservation details</p>
+    <p>Lot: {{ reservation.lot.lot_name }}</p>
+    <p>Spot number: {{ reservation.spot.spot_name }}</p>
+    <p>Time: {{ reservation.start_time }}–{{ reservation.end_time }}</p>
+    <p>License plate number: {{ reservation.license_plate_number }}</p>
+    <br />
+    <div class="inner-wrapper">
+        <form
+            [formGroup]="extendForm"
+            (ngSubmit)="submitExtendForm()"
+            novalidate
+        >
+            <mat-form-field>
+                <mat-label>Time to extend</mat-label>
+                <select
+                    matNativeControl
+                    required
+                    formControlName="timeToExtend"
+                >
+                    <option value="30mins">30 mins</option>
+                    <option value="1hour">1 hour</option>
+                    <option value="1.5hours">1.5 hours</option>
+                    <option value="2hours">2 hours</option>
+                </select>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="full-wrapper button-wrapper">
+        <div class="button-wrapper">
+            <button
+                type="submit"
+                mat_flat-button
+                [disabled]="!extendForm.valid"
+            >
+                Submit
+            </button>
+        </div>
+        <div class="button-wrapper">
+            <button
+                type="button"
+                mat-flat-button
+                [routerLink]="['/user-dashboard']"
+            >
+                Back
+            </button>
+        </div>
+    </div>
+</div>

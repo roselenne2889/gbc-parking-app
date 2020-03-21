@@ -1,1 +1,15 @@
-<p>cancel-complete works!</p>
+<div class="container button-container">
+    <div align="right">
+        <button mat-flat-button color="warn" [routerLink]="['/login']">
+            Log Out
+        </button>
+    </div>
+</div>
+<div class="container">
+    <h1>Reservation cancelled</h1>
+    <p>Your reservation has been cancelled.</p>
+    <p>Payment amount has been refunded.</p>
+    <button mat-flat-button [routerLink]="['/user-dashboard']">
+        Return to Dashboard
+    </button>
+</div>

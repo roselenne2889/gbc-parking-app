@@ -13,6 +13,10 @@ import { Lot } from "./lot";
 import { Reservation } from "./reservation";
 import { ReservationRequest } from "./reservation-request";
 
+export interface UserGBCNumber {
+    gbc_number: number;
+}
+
 @Injectable({
     providedIn: "root"
 })
@@ -81,6 +85,12 @@ export class ApiService {
     // Create (and update) reservation
     CreateReservation(data: ReservationRequest): Observable<any> {
         const API_URL = `${this.endpoint}/create-reservation`;
+        return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
+
+    // Delete reservation
+    DeleteReservation(data: UserGBCNumber): Observable<any> {
+        const API_URL = `${this.endpoint}/delete-reservation`;
         return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
     }
 

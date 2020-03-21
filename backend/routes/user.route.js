@@ -112,8 +112,8 @@ userRoute.route("/create-reservation").post((req, res, next) => {
     });
 });
 
-// Cancel reservation
-userRoute.route("/cancel-reservation").post((req, res, next) => {
+// Delete reservation
+userRoute.route("/delete-reservation").post((req, res, next) => {
     User.findOne({ gbc_number: req.body.gbc_number }, (err, user) => {
         if (err) {
             return next(err);
@@ -122,7 +122,8 @@ userRoute.route("/cancel-reservation").post((req, res, next) => {
             error.status = 401;
             return next(error);
         }
-        user.reservation.remove();
+        // user.reservation.remove();
+        user.reservation = undefined;
         user.save((err, saveRes) => {
             if (err) {
                 return next(err);
