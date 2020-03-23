@@ -9,7 +9,11 @@
     <p>Reservation details</p>
     <p>Lot: {{ reservation.lot.lot_name }}</p>
     <p>Spot number: {{ reservation.spot.spot_name }}</p>
-    <p>Time: {{ reservation.start_time }}–{{ reservation.end_time }}</p>
+    <p>
+        Time: {{ reservation.start_time | date: "shortTime" }}–{{
+            reservation.end_time | date: "shortTime"
+        }}
+    </p>
     <p>License plate number: {{ reservation.license_plate_number }}</p>
     <br />
     <div class="inner-wrapper">
@@ -25,32 +29,33 @@
                     required
                     formControlName="timeToExtend"
                 >
-                    <option value="30mins">30 mins</option>
-                    <option value="1hour">1 hour</option>
-                    <option value="1.5hours">1.5 hours</option>
-                    <option value="2hours">2 hours</option>
+                    <option
+                        *ngFor="let time of extensionTimeValues; index as i"
+                        value="{{ time }}"
+                        >{{ extensionTimeStrings[i] }}</option
+                    >
                 </select>
             </mat-form-field>
+            <div class="full-wrapper button-wrapper">
+                <div class="button-wrapper">
+                    <button
+                        type="submit"
+                        mat_flat-button
+                        [disabled]="!extendForm.valid"
+                    >
+                        Submit
+                    </button>
+                </div>
+                <div class="button-wrapper">
+                    <button
+                        type="button"
+                        mat-flat-button
+                        [routerLink]="['/user-dashboard']"
+                    >
+                        Back
+                    </button>
+                </div>
+            </div>
         </form>
-    </div>
-    <div class="full-wrapper button-wrapper">
-        <div class="button-wrapper">
-            <button
-                type="submit"
-                mat_flat-button
-                [disabled]="!extendForm.valid"
-            >
-                Submit
-            </button>
-        </div>
-        <div class="button-wrapper">
-            <button
-                type="button"
-                mat-flat-button
-                [routerLink]="['/user-dashboard']"
-            >
-                Back
-            </button>
-        </div>
     </div>
 </div>

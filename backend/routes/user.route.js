@@ -60,7 +60,7 @@ userRoute.route("/all-comments").get((req, res, next) => {
 });
 
 // Get single user
-userRoute.route("/read-user/").post((req, res, next) => {
+userRoute.route("/read-user").post((req, res, next) => {
     User.findOne({ gbc_number: req.body.gbc_number }, (error, data) => {
         if (error) {
             return next(error);

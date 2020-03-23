@@ -11,10 +11,10 @@ let ReservationSchema = new Schema({
     lot: Lot,
     spot: Spot,
     start_time: {
-        type: String
+        type: Date
     },
     end_time: {
-        type: String
+        type: Date
     },
     license_plate_number: {
         type: String

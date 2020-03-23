@@ -70,6 +70,12 @@ export class ApiService {
         return this.http.get(API_URL).pipe(catchError(this.errorMgmt));
     }
 
+    // Get single user
+    GetUser(data: any): Observable<any> {
+        const API_URL = `${this.endpoint}/read-user`;
+        return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
+
     // Get all comments
     GetAllComments(): Observable<any> {
         const API_URL = `${this.endpoint}/all-comments`;

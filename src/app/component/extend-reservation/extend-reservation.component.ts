@@ -16,6 +16,14 @@ import { ReservationRequest } from "../../shared/reservation-request";
 export class ExtendReservationComponent implements OnInit {
     extendForm: FormGroup;
     reservation: Reservation;
+    today: Date;
+    extensionTimeValues: Date[];
+    extensionTimeStrings: string[] = [
+        "30 mins",
+        "1 hour",
+        "1.5 hours",
+        "2 hours"
+    ];
     constructor(
         private apiService: ApiService,
         private dataService: DataService,
@@ -26,10 +34,67 @@ export class ExtendReservationComponent implements OnInit {
     ) {}
 
     ngOnInit() {
+        this.today = new Date();
         this.extendForm = this.fb.group({
             timeToExtend: ["", [Validators.required]]
         });
+        this.reservation = this.dataService.getReservation();
+        this.extensionTimeValues = [
+            new Date(
+                this.today.getFullYear(),
+                this.today.getMonth(),
+                this.today.getDate(),
+                0,
+                30
+            ),
+            new Date(
+                this.today.getFullYear(),
+                this.today.getMonth(),
+                this.today.getDate(),
+                1,
+                0
+            ),
+            new Date(
+                this.today.getFullYear(),
+                this.today.getMonth(),
+                this.today.getDate(),
+                1,
+                30
+            ),
+            new Date(
+                this.today.getFullYear(),
+                this.today.getMonth(),
+                this.today.getDate(),
+                2,
+                0
+            )
+        ];
     }
 
-    submitExtendForm() {}
+    submitExtendForm() {
+        if (this.extendForm.valid) {
+            let extendedTime = new Date(this.reservation.end_time);
+            extendedTime.setHours(
+                extendedTime.getHours() +
+                    new Date(
+                        this.extendForm.get("timeToExtend").value
+                    ).getHours()
+            );
+            extendedTime.setMinutes(
+                extendedTime.getMinutes() +
+                    new Date(
+                        this.extendForm.get("timeToExtend").value
+                    ).getHours()
+            );
+            this.reservation.end_time = extendedTime;
+            this.apiService
+                .CreateReservation({
+                    gbc_number: this.authService.loggedInGBCNumber,
+                    reservation: this.reservation
+                })
+                .subscribe(res => {
+                    this.router.navigateByUrl("/ext-res-complete");
+                });
+        }
+    }
 }
