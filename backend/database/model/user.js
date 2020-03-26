@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Comment = require("./comments");
 const Reservation = require("./reservation");
 const LateFees = require("./late-fees");
-const PaymentHistory = require("./reservation-history");
+const ReservationHistory = require("./reservation-history");
 
 // Define collection and schema
 let UserSchema = new Schema(
@@ -37,10 +37,10 @@ let UserSchema = new Schema(
                 ref: "LateFees"
             }
         ],
-        payment_history: [
+        reservation_history: [
             {
                 type: Schema.Types.ObjectId,
-                ref: "PaymentHistory"
+                ref: "ReservationHistory"
             }
         ]
     },

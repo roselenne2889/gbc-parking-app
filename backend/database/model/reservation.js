@@ -18,6 +18,9 @@ let ReservationSchema = new Schema({
     },
     license_plate_number: {
         type: String
+    },
+    amount: {
+        type: Number
     }
 });
 

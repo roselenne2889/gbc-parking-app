@@ -4,7 +4,7 @@ const userRoute = express.Router();
 
 // user model
 const User = require("../database/model/user");
-const PaymentHistory = require("../database/model/reservation-history");
+const ReservationHistory = require("../database/model/reservation-history");
 
 // Add User
 userRoute.route("/user-signup").post((req, res, next) => {
@@ -105,8 +105,29 @@ userRoute.route("/create-reservation").post((req, res, next) => {
                 if (err) {
                     return next(err);
                 }
-                res.json(updateRes);
+                // res.json(updateRes);
                 // Add to payment history
+                ReservationHistory.create(
+                    {
+                        date: req.body.reservation.start_time,
+                        reservation_number:
+                            req.body.reservation.reservation_number,
+                        amount: req.body.reservation.amount
+                    },
+                    (error, savedReservation) => {
+                        if (error) {
+                            return next(error);
+                        }
+                        user.reservation_history.push(savedReservation._id);
+                        user.save((saveError, updatedUser) => {
+                            if (saveError) {
+                                return next(saveError);
+                            } else {
+                                res.json(updatedUser);
+                            }
+                        });
+                    }
+                );
             }
         );
     });
@@ -130,6 +151,25 @@ userRoute.route("/delete-reservation").post((req, res, next) => {
             }
             res.json(saveRes);
         });
+    });
+});
+
+// Get payment history for user
+userRoute.route("/reservation-history").post((req, res, next) => {
+    User.findOne({ gbc_number: req.body.gbc_number }, (error, data) => {
+        if (error) {
+            return next(error);
+        } else {
+            const populateOptions = {
+                path: "reservation_history"
+            };
+            User.populate(data, populateOptions, (err, docs) => {
+                if (err) {
+                    return next(err);
+                }
+                res.json(docs);
+            });
+        }
     });
 });
 

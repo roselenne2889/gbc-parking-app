@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const paymentHistorySchema = new Schema({
+const reservationHistorySchema = new Schema({
     date: {
         type: Date
     },
@@ -13,4 +13,4 @@ const paymentHistorySchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("PaymentHistory", paymentHistorySchema);
+module.exports = mongoose.model("ReservationHistory", reservationHistorySchema);
