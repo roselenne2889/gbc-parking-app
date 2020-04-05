@@ -1,1 +1,24 @@
-<p>Select User:</p>
+<form
+    [formGroup]="selectUserForm"
+    (ngSubmit)="submitSelectUserForm()"
+    novalidate
+>
+    <mat-form-field>
+        <mat-label>Select user:</mat-label>
+        <select matNativeControl required formControlName="user_list">
+            <option
+                *ngFor="let user of users; index as i"
+                value="{{ user.gbc_number }}"
+                >{{ user.first_name + " " + user.last_name }}</option
+            >
+        </select>
+    </mat-form-field>
+    <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="!selectUserForm.valid"
+    >
+        Submit
+    </button>
+</form>

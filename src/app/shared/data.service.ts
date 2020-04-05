@@ -2,6 +2,8 @@ import { Injectable } from "@angular/core";
 
 import { Lot } from "./lot";
 import { Reservation } from "./reservation";
+import { ReservationHistory } from "./reservation-history";
+import { User } from "./user";
 
 @Injectable({
     providedIn: "root"
@@ -21,7 +23,9 @@ export class DataService {
             lot_name: "CLD" // TO DO: Change as needed
         }
     ];
-    reservation: Reservation = new Reservation();
+    reservation: Reservation;
+    reservation_history: ReservationHistory[] = [];
+    selectedUser: User;
 
     updateReservation(reservation) {
         Object.assign(this.reservation, reservation);

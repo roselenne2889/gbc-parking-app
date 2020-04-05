@@ -1,7 +1,7 @@
 import { Lot } from "./lot";
 import { Spot } from "./spot";
 
-export class Reservation {
+export interface Reservation {
     reservation_number: number;
     lot: Lot;
     spot: Spot;

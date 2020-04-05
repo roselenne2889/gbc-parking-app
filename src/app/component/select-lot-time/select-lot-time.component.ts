@@ -62,7 +62,6 @@ export class SelectLotTimeComponent implements OnInit {
             start_time: ["", [Validators.required]],
             end_time: ["", [Validators.required]]
         });
-        this.reservation = new Reservation();
         this.startTime.forEach((val, index, times) => {
             let minutes: number = 0;
             let hour: number = 8;

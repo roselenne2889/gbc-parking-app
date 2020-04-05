@@ -7,7 +7,7 @@ import { catchError, map } from "rxjs/operators";
 import {
     HttpClient,
     HttpHeaders,
-    HttpErrorResponse
+    HttpErrorResponse,
 } from "@angular/common/http";
 import { Lot } from "./lot";
 import { Reservation } from "./reservation";
@@ -18,7 +18,7 @@ export interface UserGBCNumber {
 }
 
 @Injectable({
-    providedIn: "root"
+    providedIn: "root",
 })
 export class ApiService {
     endpoint: string = "http://localhost:4000/api";
@@ -98,6 +98,18 @@ export class ApiService {
     DeleteReservation(data: UserGBCNumber): Observable<any> {
         const API_URL = `${this.endpoint}/delete-reservation`;
         return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
+
+    // Get reservation history for user
+    GetUserReservationHistory(data: UserGBCNumber): Observable<any> {
+        const API_URL = `${this.endpoint}/reservation-history`;
+        return this.http.post(API_URL, data).pipe(catchError(this.errorMgmt));
+    }
+
+    // Payment request
+    MakePayment(): Observable<any> {
+        const API_URL = `${this.endpoint}/payment`;
+        return this.http.post(API_URL, {}).pipe(catchError(this.errorMgmt));
     }
 
     SetUserLoginSession() {

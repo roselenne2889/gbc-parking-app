@@ -9,13 +9,13 @@ let express = require("express"),
 mongoose.Promise = global.Promise;
 mongoose
     .connect(dbConfig.db, {
-        useNewUrlParser: true
+        useNewUrlParser: true,
     })
     .then(
         () => {
             console.log("Database sucessfully connected");
         },
-        error => {
+        (error) => {
             console.log("Database could be not connected: " + error);
         }
     );
@@ -25,11 +25,12 @@ const userRoute = require("../backend/routes/user.route");
 const commentRoute = require("../backend/routes/comment.route");
 const adminRoute = require("../backend/routes/admin.route");
 const lotRoute = require("../backend/routes/lot.route");
+const paymentRoute = require("../backend/routes/payment.route");
 const app = express();
 app.use(bodyParser.json());
 app.use(
     bodyParser.urlencoded({
-        extended: false
+        extended: false,
     })
 );
 app.use(cors());
@@ -39,6 +40,7 @@ app.use("/api", userRoute);
 app.use("/api/comment", commentRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/lot", lotRoute);
+app.use("/api/payment", paymentRoute);
 
 // Create port
 const port = process.env.PORT || 4000;

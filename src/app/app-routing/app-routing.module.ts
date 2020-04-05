@@ -23,124 +23,130 @@ import { PaymentHistoryComponent } from "../component/payment-history/payment-hi
 import { LateFeesComponent } from "../component/late-fees/late-fees.component";
 import { ViewUserComponent } from "../component/view-user/view-user.component";
 import { SelectUserComponent } from "../component/select-user/select-user.component";
+import { MakePaymentComponent } from "../component/make-payment/make-payment.component";
 
 const routes: Routes = [
     {
         path: "",
         pathMatch: "full",
-        redirectTo: "login"
+        redirectTo: "login",
     },
     {
         path: "login",
-        component: LoginComponent
+        component: LoginComponent,
     },
     {
         path: "user-signup",
-        component: UserSignupComponent
+        component: UserSignupComponent,
     },
     {
         path: "user-dashboard",
-        component: UserDashboardComponent
+        component: UserDashboardComponent,
     },
 
     {
         path: "submit-comment",
-        component: SubmitCommentComponent
+        component: SubmitCommentComponent,
     },
     {
         path: "admin-login",
-        component: AdminLoginComponent
+        component: AdminLoginComponent,
     },
 
     {
         path: "view-comment",
-        component: ViewCommentComponent
+        component: ViewCommentComponent,
     },
 
     {
         path: "admin-dashboard",
-        component: AdminDashboardComponent
+        component: AdminDashboardComponent,
     },
 
     {
         path: "select-lot-time",
-        component: SelectLotTimeComponent
+        component: SelectLotTimeComponent,
     },
 
     {
         path: "select-spot",
-        component: ClbSpotsComponent
+        component: ClbSpotsComponent,
     },
 
     {
         path: "clc-spots",
-        component: ClcSpotsComponent
+        component: ClcSpotsComponent,
     },
 
     {
         path: "cld-spots",
-        component: CldSpotsComponent
+        component: CldSpotsComponent,
     },
 
     {
         path: "license-plate",
-        component: LicensePlateComponent
+        component: LicensePlateComponent,
     },
 
     {
         path: "confirm-reservation",
-        component: ConfResReserveComponent
+        component: ConfResReserveComponent,
     },
 
     {
         path: "reservation-complete",
-        component: ReservationCompleteComponent
+        component: ReservationCompleteComponent,
     },
 
     {
         path: "conf-res-cancel",
-        component: ConfResCancelComponent
+        component: ConfResCancelComponent,
     },
 
     {
         path: "cancel-complete",
-        component: CancelCompleteComponent
+        component: CancelCompleteComponent,
     },
 
     {
         path: "extend-reservation",
-        component: ExtendReservationComponent
+        component: ExtendReservationComponent,
     },
 
     {
         path: "ext-res-complete",
-        component: ExtResCompleteComponent
+        component: ExtResCompleteComponent,
     },
 
     {
         path: "payment-history",
-        component: PaymentHistoryComponent
+        component: PaymentHistoryComponent,
     },
 
     {
         path: "late-fees",
-        component: LateFeesComponent
+        component: LateFeesComponent,
     },
 
     {
         path: "view-user",
-        component: ViewUserComponent
+        component: ViewUserComponent,
     },
 
     {
         path: "select-user",
-        component: SelectUserComponent
-    }
+        component: SelectUserComponent,
+    },
+
+    {
+        path: "make-payment",
+        component: MakePaymentComponent,
+    },
 ];
 
 @NgModule({
     declarations: [],
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}

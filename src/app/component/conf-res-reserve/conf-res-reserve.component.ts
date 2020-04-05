@@ -27,12 +27,18 @@ export class ConfResReserveComponent implements OnInit {
     }
 
     createReservation() {
+        this.reservation.reservation_number = Number(
+            `${this.authService.loggedInGBCNumber}${this.dataService.reservation_history.length}`
+        );
         const reqObj: ReservationRequest = {
             reservation: { ...this.reservation },
             gbc_number: this.authService.loggedInGBCNumber
         };
 
         this.apiService.CreateReservation(reqObj).subscribe(res => {
+            this.dataService.reservation_history = res.reservation_history.slice(
+                0
+            );
             this.ngZone.run(() =>
                 this.router.navigateByUrl("/reservation-complete")
             );

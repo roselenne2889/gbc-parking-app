@@ -154,7 +154,7 @@ userRoute.route("/delete-reservation").post((req, res, next) => {
     });
 });
 
-// Get payment history for user
+// Get reservation history for user
 userRoute.route("/reservation-history").post((req, res, next) => {
     User.findOne({ gbc_number: req.body.gbc_number }, (error, data) => {
         if (error) {

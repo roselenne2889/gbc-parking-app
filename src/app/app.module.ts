@@ -29,44 +29,46 @@ import { PaymentHistoryComponent } from "./component/payment-history/payment-his
 import { LateFeesComponent } from "./component/late-fees/late-fees.component";
 import { ViewUserComponent } from "./component/view-user/view-user.component";
 import { SelectUserComponent } from "./component/select-user/select-user.component";
+import { MakePaymentComponent } from "./component/make-payment/make-payment.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserSignupComponent,
-    UserDashboardComponent,
-    LoginComponent,
-    SubmitCommentComponent,
-    AdminLoginComponent,
-    ViewCommentComponent,
-    AdminDashboardComponent,
-    SelectLotTimeComponent,
-    ClbSpotsComponent,
-    ClcSpotsComponent,
-    CldSpotsComponent,
-    LicensePlateComponent,
-    ConfResReserveComponent,
-    ReservationCompleteComponent,
-    ConfResCancelComponent,
-    CancelCompleteComponent,
-    ExtendReservationComponent,
-    ExtResCompleteComponent,
-    PaymentHistoryComponent,
-    LateFeesComponent,
-    ViewUserComponent,
-    SelectUserComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [ApiService],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [
+        AppComponent,
+        UserSignupComponent,
+        UserDashboardComponent,
+        LoginComponent,
+        SubmitCommentComponent,
+        AdminLoginComponent,
+        ViewCommentComponent,
+        AdminDashboardComponent,
+        SelectLotTimeComponent,
+        ClbSpotsComponent,
+        ClcSpotsComponent,
+        CldSpotsComponent,
+        LicensePlateComponent,
+        ConfResReserveComponent,
+        ReservationCompleteComponent,
+        ConfResCancelComponent,
+        CancelCompleteComponent,
+        ExtendReservationComponent,
+        ExtResCompleteComponent,
+        PaymentHistoryComponent,
+        LateFeesComponent,
+        ViewUserComponent,
+        SelectUserComponent,
+        MakePaymentComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
+    providers: [ApiService],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

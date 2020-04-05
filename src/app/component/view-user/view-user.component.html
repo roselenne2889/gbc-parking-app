@@ -1,13 +1,50 @@
 <h1>User Information</h1>
-<p>Name:</p>
-<p>GBC Number:</p>
-<p>Email:</p>
-<p>License Plate Number:</p>
+<p>Name: {{ user.first_name + " " + user.last_name }}</p>
+<p>GBC Number: {{ user.gbc_number }}</p>
+<p>Email: {{ user.email }}</p>
+<p>
+    License Plate Number:
+    {{ user.reservation ? user.reservation.license_plate_number : "N/A" }}
+</p>
 
 <h2>Payment History</h2>
-
-<h2>Reservations</h2>
-
+<div>
+    <table>
+        <thead>
+            <th>Transaction Date</th>
+            <th>Reservation Number</th>
+            <th>Amount Paid</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reservation of reservationHistory; index as i">
+                <td>{{ reservation.date | date: "dd-MM-yyyy" }}</td>
+                <td>{{ reservation.reservation_number }}</td>
+                <td>{{ reservation.amount }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h2>Reservation</h2>
+<div>
+    <table>
+        <thead>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Lot</th>
+            <th>Spot</th>
+            <th>Reservation Number</th>
+        </thead>
+        <tbody>
+            <tr *ngIf="user.reservation">
+                <td>{{ user.reservation.start_time | date: "dd-MM-yyyy" }}</td>
+                <td>{{ user.reservation.start_time | date: "shortTime" }}</td>
+                <td>{{ user.reservation.lot.lot_name }}</td>
+                <td>{{ user.reservation.spot.spot_name }}</td>
+                <td>{{ user.reservation.reservation_number }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 <button type="button" mat-flat-button [routerLink]="['/select-user']">
-  Back
+    Back
 </button>

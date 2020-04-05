@@ -31,12 +31,6 @@ let UserSchema = new Schema(
             }
         ],
         reservation: Reservation,
-        lateFees: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: "LateFees"
-            }
-        ],
         reservation_history: [
             {
                 type: Schema.Types.ObjectId,
