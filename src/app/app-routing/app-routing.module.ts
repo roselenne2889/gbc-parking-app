@@ -19,7 +19,6 @@ import { ConfResCancelComponent } from "../component/conf-res-cancel/conf-res-ca
 import { CancelCompleteComponent } from "../component/cancel-complete/cancel-complete.component";
 import { ExtendReservationComponent } from "../component/extend-reservation/extend-reservation.component";
 import { ExtResCompleteComponent } from "../component/ext-res-complete/ext-res-complete.component";
-import { PaymentHistoryComponent } from "../component/payment-history/payment-history.component";
 import { ViewUserComponent } from "../component/view-user/view-user.component";
 import { SelectUserComponent } from "../component/select-user/select-user.component";
 import { MakePaymentComponent } from "../component/make-payment/make-payment.component";
@@ -31,138 +30,132 @@ const routes: Routes = [
     {
         path: "",
         pathMatch: "full",
-        redirectTo: "login",
+        redirectTo: "login"
     },
     {
         path: "login",
-        component: LoginComponent,
+        component: LoginComponent
     },
     {
         path: "user-signup",
-        component: UserSignupComponent,
+        component: UserSignupComponent
     },
     {
         path: "user-dashboard",
         component: UserDashboardComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "submit-comment",
         component: SubmitCommentComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
     {
         path: "admin-login",
-        component: AdminLoginComponent,
+        component: AdminLoginComponent
     },
 
     {
         path: "view-comment",
         component: ViewCommentComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     },
 
     {
         path: "admin-dashboard",
         component: AdminDashboardComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     },
 
     {
         path: "select-lot-time",
         component: SelectLotTimeComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "select-spot",
         component: ClbSpotsComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "clc-spots",
         component: ClcSpotsComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "cld-spots",
         component: CldSpotsComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "license-plate",
         component: LicensePlateComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "confirm-reservation",
         component: ConfResReserveComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "reservation-complete",
         component: ReservationCompleteComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "conf-res-cancel",
         component: ConfResCancelComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "cancel-complete",
         component: CancelCompleteComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "extend-reservation",
         component: ExtendReservationComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "ext-res-complete",
         component: ExtResCompleteComponent,
-        canActivate: [UserAuthGuard],
-    },
-
-    {
-        path: "payment-history",
-        component: PaymentHistoryComponent,
-        canActivate: [UserAuthGuard],
+        canActivate: [UserAuthGuard]
     },
 
     {
         path: "view-user",
         component: ViewUserComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     },
 
     {
         path: "select-user",
         component: SelectUserComponent,
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard]
     },
 
     {
         path: "make-payment",
         component: MakePaymentComponent,
-        canActivate: [UserAuthGuard],
-    },
+        canActivate: [UserAuthGuard]
+    }
 ];
 
 @NgModule({
     declarations: [],
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -25,7 +25,6 @@ import { ConfResCancelComponent } from "./component/conf-res-cancel/conf-res-can
 import { CancelCompleteComponent } from "./component/cancel-complete/cancel-complete.component";
 import { ExtendReservationComponent } from "./component/extend-reservation/extend-reservation.component";
 import { ExtResCompleteComponent } from "./component/ext-res-complete/ext-res-complete.component";
-import { PaymentHistoryComponent } from "./component/payment-history/payment-history.component";
 import { ViewUserComponent } from "./component/view-user/view-user.component";
 import { SelectUserComponent } from "./component/select-user/select-user.component";
 import { MakePaymentComponent } from "./component/make-payment/make-payment.component";
@@ -51,10 +50,9 @@ import { MakePaymentComponent } from "./component/make-payment/make-payment.comp
         CancelCompleteComponent,
         ExtendReservationComponent,
         ExtResCompleteComponent,
-        PaymentHistoryComponent,
         ViewUserComponent,
         SelectUserComponent,
-        MakePaymentComponent,
+        MakePaymentComponent
     ],
     imports: [
         BrowserModule,
@@ -63,10 +61,10 @@ import { MakePaymentComponent } from "./component/make-payment/make-payment.comp
         AngularMaterialModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule
     ],
     providers: [ApiService],
     bootstrap: [AppComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
