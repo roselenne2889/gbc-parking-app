@@ -1,6 +1,6 @@
 <div class="container button-container">
     <div align="right">
-        <button mat-flat-button color="warn" [routerLink]="['/login']">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
             Logout
         </button>
     </div>
@@ -9,11 +9,15 @@
     <p>Please confirm your reservation details below</p>
     <p>Lot: {{ reservation.lot.lot_name }}</p>
     <p>Spot number: {{ reservation.spot.spot_name }}</p>
-    <p>Time: {{ reservation.start_time }}–{{ reservation.end_time }}</p>
+    <p>
+        Time: {{ reservation.start_time | date: "shortTime" }}–{{
+            reservation.end_time | date: "shortTime"
+        }}
+    </p>
     <p>License plate number: {{ reservation.license_plate_number }}</p>
     <br />
     <button mat-flat-button color="primary" (click)="deleteReservation()">
-        Reserve
+        Cancel Reservation
     </button>
     &nbsp;&nbsp;
     <button mat-flat-button color="accent" [routerLink]="['/user-dashboard']">

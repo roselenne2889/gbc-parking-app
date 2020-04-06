@@ -8,8 +8,8 @@
 </p>
 
 <h2>Payment History</h2>
-<div>
-    <table>
+<div class="container">
+    <table class="table">
         <thead>
             <th>Transaction Date</th>
             <th>Reservation Number</th>
@@ -25,8 +25,8 @@
     </table>
 </div>
 <h2>Reservation</h2>
-<div>
-    <table>
+<div class="container">
+    <table class="table">
         <thead>
             <th>Date</th>
             <th>Time</th>
@@ -37,7 +37,11 @@
         <tbody>
             <tr *ngIf="user.reservation">
                 <td>{{ user.reservation.start_time | date: "dd-MM-yyyy" }}</td>
-                <td>{{ user.reservation.start_time | date: "shortTime" }}</td>
+                <td>
+                    {{ user.reservation.start_time | date: "shortTime" }}–{{
+                        user.reservation.end_time | date: "shortTime"
+                    }}
+                </td>
                 <td>{{ user.reservation.lot.lot_name }}</td>
                 <td>{{ user.reservation.spot.spot_name }}</td>
                 <td>{{ user.reservation.reservation_number }}</td>

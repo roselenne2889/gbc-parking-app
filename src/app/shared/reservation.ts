@@ -8,4 +8,5 @@ export interface Reservation {
     start_time: Date;
     end_time: Date;
     license_plate_number: string;
+    amount: number;
 }

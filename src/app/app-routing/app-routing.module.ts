@@ -20,10 +20,12 @@ import { CancelCompleteComponent } from "../component/cancel-complete/cancel-com
 import { ExtendReservationComponent } from "../component/extend-reservation/extend-reservation.component";
 import { ExtResCompleteComponent } from "../component/ext-res-complete/ext-res-complete.component";
 import { PaymentHistoryComponent } from "../component/payment-history/payment-history.component";
-import { LateFeesComponent } from "../component/late-fees/late-fees.component";
 import { ViewUserComponent } from "../component/view-user/view-user.component";
 import { SelectUserComponent } from "../component/select-user/select-user.component";
 import { MakePaymentComponent } from "../component/make-payment/make-payment.component";
+
+import { AuthGuard } from "../shared/auth.guard";
+import { UserAuthGuard } from "../shared/user-auth.guard";
 
 const routes: Routes = [
     {
@@ -42,11 +44,13 @@ const routes: Routes = [
     {
         path: "user-dashboard",
         component: UserDashboardComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "submit-comment",
         component: SubmitCommentComponent,
+        canActivate: [UserAuthGuard],
     },
     {
         path: "admin-login",
@@ -56,91 +60,103 @@ const routes: Routes = [
     {
         path: "view-comment",
         component: ViewCommentComponent,
+        canActivate: [AuthGuard],
     },
 
     {
         path: "admin-dashboard",
         component: AdminDashboardComponent,
+        canActivate: [AuthGuard],
     },
 
     {
         path: "select-lot-time",
         component: SelectLotTimeComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "select-spot",
         component: ClbSpotsComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "clc-spots",
         component: ClcSpotsComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "cld-spots",
         component: CldSpotsComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "license-plate",
         component: LicensePlateComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "confirm-reservation",
         component: ConfResReserveComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "reservation-complete",
         component: ReservationCompleteComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "conf-res-cancel",
         component: ConfResCancelComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "cancel-complete",
         component: CancelCompleteComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "extend-reservation",
         component: ExtendReservationComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "ext-res-complete",
         component: ExtResCompleteComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "payment-history",
         component: PaymentHistoryComponent,
-    },
-
-    {
-        path: "late-fees",
-        component: LateFeesComponent,
+        canActivate: [UserAuthGuard],
     },
 
     {
         path: "view-user",
         component: ViewUserComponent,
+        canActivate: [AuthGuard],
     },
 
     {
         path: "select-user",
         component: SelectUserComponent,
+        canActivate: [AuthGuard],
     },
 
     {
         path: "make-payment",
         component: MakePaymentComponent,
+        canActivate: [UserAuthGuard],
     },
 ];
 

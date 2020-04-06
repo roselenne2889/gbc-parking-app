@@ -35,17 +35,17 @@ lotRoute.route("/get-spots").post((req, res, next) => {
 lotRoute.route("/get-taken").post((req, res, next) => {
     const takenSpots = [];
     const takenCursor = User.find({
-        "reservation.lot.lot_name": req.body.lot_name
+        "reservation.lot.lot_name": req.body.lot_name,
     }).cursor();
-    takenCursor.next((cursorError, userDoc) => {
-        if (cursorError) {
-            return next(cursorError);
-        }
-        if (userDoc && userDoc.reservation) {
-            takenSpots.push(userDoc.reservation.spot.spot_name);
-        }
-    });
-    res.json(takenSpots);
+    takenCursor
+        .on("data", (userDoc) => {
+            if (userDoc && userDoc.reservation) {
+                takenSpots.push(userDoc.reservation.spot.spot_name);
+            }
+        })
+        .on("end", () => {
+            res.json(takenSpots);
+        });
 });
 
 module.exports = lotRoute;

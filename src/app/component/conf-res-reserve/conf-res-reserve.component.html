@@ -1,6 +1,6 @@
 <div class="container button-container">
     <div align="right">
-        <button mat-flat-button color="warn" [routerLink]="['/login']">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
             Logout
         </button>
     </div>

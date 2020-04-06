@@ -1,1 +1,137 @@
-<p>make-payment works!</p>
+<!-- Title group  -->
+<div class="container row align-items-center">
+    <div class="col">
+        <div class="title-group">
+            <h1 class="mat-h1">Payment</h1>
+        </div>
+
+        <!--Form-->
+        <div class="inner-wrapper">
+            <form
+                [formGroup]="paymentForm"
+                (ngSubmit)="submitPaymentForm()"
+                novalidate
+            >
+                <mat-card>
+                    <div class="controllers=wrapper">
+                        <!--first name-->
+                        <mat-form-field class="example-full-width">
+                            <input
+                                matInput
+                                placeholder="Email"
+                                formControlName="email"
+                            />
+                            <mat-error *ngIf="handleError('email', 'required')">
+                                Please enter a valid email address
+                            </mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <!--last name-->
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Credit Card Number"
+                                formControlName="credit_card_number"
+                            />
+                            <mat-error
+                                *ngIf="
+                                    handleError(
+                                        'credit_card_number',
+                                        'required'
+                                    )
+                                "
+                            >
+                                Please enter a valid credit card number
+                            </mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <!--gbc number-->
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Expiration Date"
+                                formControlName="expiration_date"
+                            />
+                            <mat-error
+                                *ngIf="
+                                    handleError('expiration_date', 'required')
+                                "
+                            >
+                                Please enter a valid date
+                            </mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <!--security code-->
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Security Code"
+                                formControlName="security_code"
+                            />
+                            <mat-error
+                                *ngIf="handleError('security_code', 'required')"
+                            >
+                                Please enter a valid security code
+                            </mat-error>
+                        </mat-form-field>
+                        <br />
+
+                        <!--Cardholder name-->
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Cardholder Name"
+                                formControlName="cardholder_name"
+                            />
+                            <mat-error
+                                *ngIf="
+                                    handleError('cardholder_name', 'required')
+                                "
+                            >
+                                Please enter a valid name
+                            </mat-error>
+                        </mat-form-field>
+
+                        <!-- Postal Code -->
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Postal Code"
+                                formControlName="postal_code"
+                            />
+                            <mat-error
+                                *ngIf="handleError('postal_code', 'required')"
+                            >
+                                Please enter a valid postal code
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <br />
+                    <div class="full-wrapper button-wrapper">
+                        <button
+                            type="submit"
+                            mat-flat-button
+                            color="primary"
+                            [disabled]="!paymentForm.valid"
+                        >
+                            Make Payment
+                        </button>
+                        &nbsp;
+
+                        <button
+                            type="button"
+                            mat-flat-button
+                            [routerLink]="['/confirm-reservation']"
+                            color="warn"
+                        >
+                            Back
+                        </button>
+                    </div>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>

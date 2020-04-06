@@ -5,23 +5,25 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ApiService } from "../../shared/api.service";
 import { DataService } from "../../shared/data.service";
 import { Reservation } from "../../shared/reservation";
+import { AuthService } from "../../shared/auth.service";
 
 @Component({
     selector: "app-license-plate",
     templateUrl: "./license-plate.component.html",
-    styleUrls: ["./license-plate.component.css"]
+    styleUrls: ["./license-plate.component.css"],
 })
 export class LicensePlateComponent implements OnInit {
     licensePlateForm: FormGroup;
     constructor(
         private fb: FormBuilder,
         private dataService: DataService,
-        private router: Router
+        private router: Router,
+        public authService: AuthService
     ) {}
 
     ngOnInit() {
         this.licensePlateForm = this.fb.group({
-            license_plate_number: ["", [Validators.required]]
+            license_plate_number: ["", [Validators.required]],
         });
     }
 
@@ -34,7 +36,7 @@ export class LicensePlateComponent implements OnInit {
             this.dataService.updateReservation({
                 license_plate_number: this.licensePlateForm.get(
                     "license_plate_number"
-                ).value
+                ).value,
             });
             this.router.navigateByUrl("/confirm-reservation");
             console.log(this.dataService.getReservation());

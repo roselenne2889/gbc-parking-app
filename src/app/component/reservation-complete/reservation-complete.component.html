@@ -1,14 +1,14 @@
 <div class="container button-container">
-  <div align="right">
-    <button mat-flat-button color="warn" [routerLink]="['/login']">
-      Logout
-    </button>
-  </div>
+    <div align="right">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
+            Logout
+        </button>
+    </div>
 </div>
 <div class="container res-complete-container">
-  <p>Reservation Complete</p>
-  <p>Reservation Id: 5685934</p>
-  <button mat-flat-button color="primary" [routerLink]="['/user-dashboard']">
-    Return to Dashboard
-  </button>
+    <p>Reservation Complete</p>
+    <p>Reservation ID: {{ reservation.reservation_number }}</p>
+    <button mat-flat-button color="primary" [routerLink]="['/user-dashboard']">
+        Return to Dashboard
+    </button>
 </div>

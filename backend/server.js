@@ -19,7 +19,7 @@ mongoose
             console.log("Database could be not connected: " + error);
         }
     );
-
+mongoose.set("useFindAndModify", false);
 // Setting up port with express js
 const userRoute = require("../backend/routes/user.route");
 const commentRoute = require("../backend/routes/comment.route");

@@ -9,14 +9,14 @@ import { AuthService } from "../../shared/auth.service";
 @Component({
     selector: "app-conf-res-cancel",
     templateUrl: "./conf-res-cancel.component.html",
-    styleUrls: ["./conf-res-cancel.component.css"]
+    styleUrls: ["./conf-res-cancel.component.css"],
 })
 export class ConfResCancelComponent implements OnInit {
     reservation: Reservation;
     constructor(
         private apiService: ApiService,
         private dataService: DataService,
-        private authService: AuthService,
+        public authService: AuthService,
         private router: Router,
         private ngZone: NgZone
     ) {}
@@ -27,10 +27,10 @@ export class ConfResCancelComponent implements OnInit {
 
     deleteReservation() {
         const reqObj: UserGBCNumber = {
-            gbc_number: this.authService.loggedInGBCNumber
+            gbc_number: this.authService.loggedInGBCNumber,
         };
 
-        this.apiService.DeleteReservation(reqObj).subscribe(res => {
+        this.apiService.DeleteReservation(reqObj).subscribe((res) => {
             this.ngZone.run(() =>
                 this.router.navigateByUrl("/cancel-complete")
             );

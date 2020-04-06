@@ -26,7 +26,6 @@ import { CancelCompleteComponent } from "./component/cancel-complete/cancel-comp
 import { ExtendReservationComponent } from "./component/extend-reservation/extend-reservation.component";
 import { ExtResCompleteComponent } from "./component/ext-res-complete/ext-res-complete.component";
 import { PaymentHistoryComponent } from "./component/payment-history/payment-history.component";
-import { LateFeesComponent } from "./component/late-fees/late-fees.component";
 import { ViewUserComponent } from "./component/view-user/view-user.component";
 import { SelectUserComponent } from "./component/select-user/select-user.component";
 import { MakePaymentComponent } from "./component/make-payment/make-payment.component";
@@ -53,7 +52,6 @@ import { MakePaymentComponent } from "./component/make-payment/make-payment.comp
         ExtendReservationComponent,
         ExtResCompleteComponent,
         PaymentHistoryComponent,
-        LateFeesComponent,
         ViewUserComponent,
         SelectUserComponent,
         MakePaymentComponent,

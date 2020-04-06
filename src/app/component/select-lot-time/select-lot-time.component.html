@@ -1,6 +1,6 @@
 <div class="container button-container">
     <div align="right">
-        <button mat-flat-button color="warn" [routerLink]="['/login']">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
             Log Out
         </button>
     </div>
@@ -26,7 +26,12 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <mat-form-field>
             <mat-label>Start</mat-label>
-            <select matNativeControl required formControlName="start_time">
+            <select
+                matNativeControl
+                required
+                formControlName="start_time"
+                (change)="updateEndTime()"
+            >
                 <option
                     *ngFor="let time of startTime; index as i"
                     value="{{ time }}"

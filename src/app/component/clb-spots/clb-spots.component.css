@@ -24,7 +24,7 @@ mat-grid-tile {
 }
 
 .unavailable {
-    background-color: white;
+    background-color: #000000;
 }
 
 mat-grid-list {
@@ -50,6 +50,6 @@ p {
 .color-container2 {
     height: 30px;
     width: 30px;
-    background-color: white;
+    background-color: #000000;
     margin-left: 300px;
 }

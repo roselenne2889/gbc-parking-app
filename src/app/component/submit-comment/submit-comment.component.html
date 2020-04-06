@@ -1,45 +1,49 @@
 <br />
 <div class="container logout-button-container">
-  <div align="right">
-    <button mat-flat-button color="warn" [routerLink]="['/login']">
-      Log Out
-    </button>
-  </div>
+    <div align="right">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
+            Log Out
+        </button>
+    </div>
 </div>
 <p>Please fill out your comment below</p>
 <div class="container comment-container">
-  <form
-    [formGroup]="commentForm"
-    (ngSubmit)="submitCommentForm()"
-    #resetCommentForm="ngForm"
-    novalidate
-  >
-    <mat-form-field class="example-full-width" appearance="outline">
-      <textarea matInput placeholder="Comment" formControlName="comment_text">
-      </textarea>
-      <mat-error *ngIf="handleError('comment_text', 'required')">
-        Field cannot be empty
-      </mat-error>
-    </mat-form-field>
-    <br /><br /><br />
-    <div class="full-wrapper button-wrapper">
-      <button
-        type="submit"
-        mat-flat-button
-        color="primary"
-        [disabled]="!commentForm.valid"
-      >
-        Submit
-      </button>
-      &nbsp;
-      <button
-        type="button"
-        mat-flat-button
-        color="accent"
-        [routerLink]="['/user-dashboard']"
-      >
-        Back
-      </button>
-    </div>
-  </form>
+    <form
+        [formGroup]="commentForm"
+        (ngSubmit)="submitCommentForm()"
+        #resetCommentForm="ngForm"
+        novalidate
+    >
+        <mat-form-field class="example-full-width" appearance="outline">
+            <textarea
+                matInput
+                placeholder="Comment"
+                formControlName="comment_text"
+            >
+            </textarea>
+            <mat-error *ngIf="handleError('comment_text', 'required')">
+                Field cannot be empty
+            </mat-error>
+        </mat-form-field>
+        <br /><br /><br />
+        <div class="full-wrapper button-wrapper">
+            <button
+                type="submit"
+                mat-flat-button
+                color="primary"
+                [disabled]="!commentForm.valid"
+            >
+                Submit
+            </button>
+            &nbsp;
+            <button
+                type="button"
+                mat-flat-button
+                color="accent"
+                [routerLink]="['/user-dashboard']"
+            >
+                Back
+            </button>
+        </div>
+    </form>
 </div>

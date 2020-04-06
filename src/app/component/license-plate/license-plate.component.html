@@ -1,31 +1,31 @@
 <div align="right">
-  <button mat-flat-button color="warn" [routerLink]="['/login']">
-    Logout
-  </button>
+    <button mat-flat-button color="warn" (click)="authService.logOut()">
+        Logout
+    </button>
 </div>
 <div class="container license-container">
-  <p>Please enter your license plate number</p>
-  <form
-    [formGroup]="licensePlateForm"
-    (ngSubmit)="submitLicensePlateForm()"
-    novalidate
-  >
-    <mat-form-field>
-      <input
-        matInput
-        placeholder="License Plate Number"
-        formControlName="license_plate_number"
-      />
-      <mat-error *ngIf="handleError('license_plate_number', 'required')">
-        You must enter a license plate number
-      </mat-error>
-    </mat-form-field>
-    <br />
-    <button mat-flat-button color="primary" type="submit">
-      Continue
+    <p>Please enter your license plate number</p>
+    <form
+        [formGroup]="licensePlateForm"
+        (ngSubmit)="submitLicensePlateForm()"
+        novalidate
+    >
+        <mat-form-field>
+            <input
+                matInput
+                placeholder="License Plate Number"
+                formControlName="license_plate_number"
+            />
+            <mat-error *ngIf="handleError('license_plate_number', 'required')">
+                You must enter a license plate number
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <button mat-flat-button color="primary" type="submit">
+            Continue
+        </button>
+    </form>
+    <button mat-flat-button color="accent" [routerLink]="['/select-spot']">
+        Back
     </button>
-  </form>
-  <button mat-flat-button color="accent" [routerLink]="['/select-spot']">
-    Back
-  </button>
 </div>

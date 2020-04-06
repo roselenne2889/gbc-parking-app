@@ -1,6 +1,6 @@
 <div class="container button-container">
     <div align="right">
-        <button mat-flat-button color="warn" [routerLink]="['/login']">
+        <button mat-flat-button color="warn" (click)="authService.logOut()">
             Log Out
         </button>
     </div>
@@ -19,6 +19,7 @@
 <div class="container gridlist-container">
     <div
         class="spot"
+        [ngClass]="{ unavailable: !spotAvailability[i] }"
         *ngFor="let spot of spots; index as i"
         (click)="selectSpot(i + 1)"
     >

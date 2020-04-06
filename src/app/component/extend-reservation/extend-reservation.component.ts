@@ -11,7 +11,7 @@ import { ReservationRequest } from "../../shared/reservation-request";
 @Component({
     selector: "app-extend-reservation",
     templateUrl: "./extend-reservation.component.html",
-    styleUrls: ["./extend-reservation.component.css"]
+    styleUrls: ["./extend-reservation.component.css"],
 })
 export class ExtendReservationComponent implements OnInit {
     extendForm: FormGroup;
@@ -22,12 +22,12 @@ export class ExtendReservationComponent implements OnInit {
         "30 mins",
         "1 hour",
         "1.5 hours",
-        "2 hours"
+        "2 hours",
     ];
     constructor(
         private apiService: ApiService,
         private dataService: DataService,
-        private authService: AuthService,
+        public authService: AuthService,
         private router: Router,
         private ngZone: NgZone,
         private fb: FormBuilder
@@ -36,9 +36,11 @@ export class ExtendReservationComponent implements OnInit {
     ngOnInit() {
         this.today = new Date();
         this.extendForm = this.fb.group({
-            timeToExtend: ["", [Validators.required]]
+            timeToExtend: ["", [Validators.required]],
         });
         this.reservation = this.dataService.getReservation();
+        this.reservation.start_time = new Date(this.reservation.start_time);
+        this.reservation.end_time = new Date(this.reservation.end_time);
         this.extensionTimeValues = [
             new Date(
                 this.today.getFullYear(),
@@ -67,7 +69,7 @@ export class ExtendReservationComponent implements OnInit {
                 this.today.getDate(),
                 2,
                 0
-            )
+            ),
         ];
     }
 
@@ -87,12 +89,13 @@ export class ExtendReservationComponent implements OnInit {
                     ).getHours()
             );
             this.reservation.end_time = extendedTime;
+            console.log(this.reservation);
             this.apiService
                 .CreateReservation({
                     gbc_number: this.authService.loggedInGBCNumber,
-                    reservation: this.reservation
+                    reservation: this.reservation,
                 })
-                .subscribe(res => {
+                .subscribe((res) => {
                     this.router.navigateByUrl("/ext-res-complete");
                 });
         }
